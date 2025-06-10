@@ -26,6 +26,15 @@ class Enforcement:
     def _handle_allowed(self, _topic: str, payload: Dict) -> None:
         log.info(f"Enforcing {payload['action']}")
         enforce(payload["action"], payload)
+        # notify other components of the decision
+        self.bus.publish(
+            "action/decision",
+            {"action": payload.get("action"), "allow": True},
+        )
 
     def _handle_blocked(self, _topic: str, payload: Dict) -> None:
         log.info(f"Blocked {payload['action']}")
+        self.bus.publish(
+            "action/decision",
+            {"action": payload.get("action"), "allow": False},
+        )

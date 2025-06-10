@@ -32,6 +32,11 @@ class PolicyChecker:
         topic = "action/allowed" if allowed else "action/blocked"
         log.info(f"{topic}: {payload['action']}")
         self.bus.publish(topic, payload)
+        # emit a generic decision event for UI updates and auditing
+        self.bus.publish(
+            "action/decision",
+            {"action": payload.get("action"), "allow": allowed},
+        )
 
     def check(self, activity: str, confidence: float) -> bool:
         rule = self.rules.get(activity)
