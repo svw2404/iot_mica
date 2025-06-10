@@ -1,2 +1,3 @@
 # Requirements for IoT Trigger Action Protection
-# (no external dependencies required for the basic demo)
+Flask
+pytest
