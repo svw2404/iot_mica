@@ -1,0 +1,10 @@
+{
+    "motion": {
+        "trigger": "motion_detected",
+        "threshold": 0.8
+    },
+    "idle": {
+        "trigger": "no_motion",
+        "threshold": 0.5
+    }
+}

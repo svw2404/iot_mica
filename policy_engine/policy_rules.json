@@ -1,0 +1,8 @@
+{
+    "motion": {
+        "threshold": 0.8
+    },
+    "idle": {
+        "threshold": 0.5
+    }
+}
