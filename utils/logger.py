@@ -1,9 +1,3 @@
-
----
-
-### **utils/logger.py**
-
-```python
 import logging
 import sys
 
