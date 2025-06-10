@@ -1,0 +1,20 @@
+{
+  "policies": [
+    {
+      "activity": "home",
+      "allowed_actions": ["remote_door_unlock"]
+    },
+    {
+      "activity": "away",
+      "blocked_actions": ["remote_door_unlock"]
+    },
+    {
+      "activity": "vacation",
+      "blocked_actions": ["remote_door_unlock"]
+    },
+    {
+      "activity": "sleeping",
+      "blocked_actions": ["remote_door_unlock"]
+    }
+  ]
+}
