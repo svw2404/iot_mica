@@ -19,3 +19,8 @@ class MotionSensor(threading.Thread):
             log.info(f"Motion={value}")
             self.bus.publish("sensor/motion", {"value": value})
             time.sleep(self.interval)
+
+
+def motion_detected() -> int:
+    """Return a random motion value (0 or 1)."""
+    return random.choice([0, 1])
