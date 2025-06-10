@@ -13,3 +13,16 @@ This project provides a simulated IoT environment with a policy enforcement laye
 - `docs/` offers additional documentation for setup.
 
 Run `python main.py` to start a sample application.
+
+## Quick start
+1. Install dependencies: `pip install -r requirements.txt`
+2. Run the application: `python main.py`
+   - Terminal will stream sensor/activity/policy logs
+   - You’ll also see:
+     ```
+      * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+     ```
+3. Open your browser at <http://localhost:5000> to view the live dashboard.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
