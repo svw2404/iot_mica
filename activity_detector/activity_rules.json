@@ -1,0 +1,16 @@
+{
+  "activities": [
+    {
+      "name": "UserAtHome",
+      "conditions": [
+        { "topic": "sensor/motion", "value": 1 }
+      ]
+    },
+    {
+      "name": "UserAway",
+      "conditions": [
+        { "topic": "sensor/motion", "value": 0 }
+      ]
+    }
+  ]
+}
