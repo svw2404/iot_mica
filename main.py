@@ -7,7 +7,7 @@ from sensor_simulator.motion_sensor import MotionSensor
 from activity_detector.activity_model import ActivityModel
 from policy_engine.policy_checker   import PolicyChecker
 from protection_layer.enforcement   import Enforcement
-from user_interface.app             import Dashboard
+from user_interface.dashboard       import Dashboard
 
 log = get_logger("Main")
 
