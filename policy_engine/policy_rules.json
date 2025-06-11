@@ -1,8 +1,13 @@
 {
-    "motion": {
-        "threshold": 0.8
+  "policies": [
+    {
+      "activity": "UserAway",
+      "allowed_actions": ["device/light/off"],
+      "blocked_actions": ["device/light/on"]
     },
-    "idle": {
-        "threshold": 0.5
+    {
+      "activity": "UserAtHome",
+      "allowed_actions": ["device/light/on", "device/light/off"]
     }
+  ]
 }

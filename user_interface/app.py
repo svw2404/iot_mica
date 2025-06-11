@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, render_template_string
 from threading import Thread
 
-# Enhanced UI using Bootstrap for a more aesthetic design\ n
+# Enhanced UI using Bootstrap for a more aesthetic design
 HTML = """
 <!doctype html>
 <html lang="en">
@@ -29,6 +29,11 @@ HTML = """
     .card-body p {
       font-size: 1.1rem;
     }
+    .card-footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
   </style>
 </head>
 <body>
@@ -44,6 +49,11 @@ HTML = """
           {{ decision }}
         </span>
       </p>
+      <p><strong>Temperature:</strong> {{ temp }}°C</p>
+      <p><strong>Motion:</strong> {{ motion }}</p>
+    </div>
+    <div class="card-footer">
+      &copy; 歐茗可 - Wireless & Mobile Networks Class - Professor Xu
     </div>
   </div>
 </body>
@@ -57,10 +67,14 @@ class Dashboard:
         self._activity = "unknown"
         self._action   = "—"
         self._decision = "—"
+        self._temp     = "—"
+        self._motion   = "—"
 
         # Subscribe to system events
-        bus.subscribe("activity/detected", self._on_activity)
-        bus.subscribe("action/decision",  self._on_decision)
+        bus.subscribe("sensor/temperature", self._on_temp)
+        bus.subscribe("sensor/motion",      self._on_motion)
+        bus.subscribe("activity/detected",  self._on_activity)
+        bus.subscribe("action/decision",    self._on_decision)
 
         # Explicit import name to ensure correct module is served
         self.app = Flask('user_interface.app')
@@ -81,6 +95,8 @@ class Dashboard:
             activity=self._activity,
             action=self._action,
             decision=self._decision,
+            temp=self._temp,
+            motion=self._motion
         )
 
     def _status(self):
@@ -89,7 +105,15 @@ class Dashboard:
             activity=self._activity,
             action=self._action,
             decision=self._decision,
+            temp=self._temp,
+            motion=self._motion
         )
+
+    def _on_temp(self, _topic, payload):
+        self._temp = payload.get("value", "—")
+
+    def _on_motion(self, _topic, payload):
+        self._motion = payload.get("value", "—")
 
     def _on_activity(self, _topic, payload):
         self._activity = payload.get("activity", "unknown")

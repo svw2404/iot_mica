@@ -1,10 +1,16 @@
 {
-    "motion": {
-        "trigger": "motion_detected",
-        "threshold": 0.8
+  "activities": [
+    {
+      "name": "UserAtHome",
+      "conditions": [
+        { "topic": "sensor/motion", "value": 1 }
+      ]
     },
-    "idle": {
-        "trigger": "no_motion",
-        "threshold": 0.5
+    {
+      "name": "UserAway",
+      "conditions": [
+        { "topic": "sensor/motion", "value": 0 }
+      ]
     }
+  ]
 }
