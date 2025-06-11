@@ -14,7 +14,7 @@ def load_rules(path: str):
 
 def main():
     rules = load_rules("policy_engine/policy_rules.json")
-    checker = policy_checker.PolicyChecker(rules)
+    checker = policy_checker.PolicyChecker(rules=rules)
 
     temp = temp_sensor.read_temperature()
     motion = motion_sensor.motion_detected()
